@@ -61,5 +61,5 @@ function getContents() {
 
 function changePage(){
 	console.log("Change Page!");
-	$.mobile.changePage( "#detail-view", { transition: "slideup", changeHash: false });	
+	$.mobile.changePage( "#detail-view", { transition: "slideup", changeHash: true });	
 }
