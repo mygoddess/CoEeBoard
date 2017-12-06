@@ -1,6 +1,7 @@
 $( document ).ready(function() {
     console.log( "ready!" );
-	getContents();
+	loadTemplate();
+	//getContents();
 });
 
 function getDetail(){
@@ -20,46 +21,17 @@ function getDetail(){
 function _getdata(arr){
 	//your JSON resuls are now in arr. Do what you need with the array.
 }
-
-function getContents() {
-	var intraurl = "http://intra.coe.psu.ac.th/announce/";
-	$.getJSON( intraurl, {
-		data1: "test1",
-		data2: "test2",
-		data3: "test3"
+function loadTemplate() {
+	console.log('start load template');
+	var intraurl = "http://intra.coe.psu.ac.th/announce/template";
+	$.get( intraurl, {
+		isinit: true
 	})
     .done(function( data ) {
-		console.log( "Accept!" );
-  		$.each( data, function( key, value ) {
-			if(key === 'News'){
-				$.each(value, function(k, v){
-					console.log(k + '/' + v.topic + '/' + v.desc);
-					var div = $('<div data-role="collapsible" data-theme="a" data-content-theme="a"></div>');//'<div data-role="collapsible" data-theme="a" data-content-theme="a"></div>';
-					var title = $("<h4></h4>").text(v.topic);//'<h4>' + v.topic + '</h4>';	
-                	var desc = $("<p></p>").text(v.desc); //'<p>' +  v.desc + '</p>';
-					div.append(title);
-					div.append(desc);
-					$("#news-content").append(div);
-				});
-			}
-			if(key === 'Student'){
-				$.each(value, function(k, v){
-					console.log(k + '/' + v);
-				});
-			}
-
-		/*
-		$( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" );
-		if ( i === 3 ) {
-		  return false;
-		}
-		*/
-		});
-		$("#main").trigger("create");
+		//console.log(data);
+		console.log( "Load Template!" );
+		$('body').html(data);
+		//$("#main").trigger("create");
+		$.mobile.changePage( "#main", { transition: "fade", changeHash: true })
 	});
-}
-
-function changePage(){
-	console.log("Change Page!");
-	$.mobile.changePage( "#detail-view", { transition: "slideup", changeHash: true });	
 }

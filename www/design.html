@@ -18,14 +18,36 @@
         
     <div data-role="page" id="main"  data-theme="a">
         <div data-role="header">
-	        <h1>Loading data....</h1>
+	        <h1>ขอพบนักศึกษา</h1>
         </div>
         <div data-role="content" id="news-content">
             <div data-role="collapsible" data-theme="a" data-content-theme="a">
-                <h4>eBoard Connecting...</h4>
-                <p>CoE eBoard data loading.</p>
+                <h4>Heading</h4>
+                <p>I'm the collapsible content with a themed content block set to "b".</p>
             </div>
+            <ul data-inset="true" data-role="listview" data-theme="a">
+                <li><a href="#detail-view" data-transition="flip">Program</a></li>
+            </ul>
 		</div>
-    </div>      
+        <a href="#" data-role="button" onClick="changePage();">Button</a>
+        
+        <div data-role="header">
+            <h1>ตารางกิจกรรม</h1>
+        </div>
+        <div data-role="footer">
+            <h4>Footer</h4>
+        </div>
+    </div>
+    <div data-role="page" id="detail-view">
+        <div data-role="header" data-add-back-btn="true">
+            <h1>Header</h1>
+        </div>
+        <div data-role="content">Content</div>
+        <div data-role="footer">
+            <h4>Footer</h4>
+        </div>
+    </div>
+	
+        
     </body>
 </html>
