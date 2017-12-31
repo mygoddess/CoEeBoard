@@ -14,6 +14,7 @@ $( document ).ready(function() {
 
 function start()
 {
+	alert('start loop... ('+ interval + 'S)' );
 	var refresh,       
 	intvrefresh = function() {
 		clearInterval(refresh);
@@ -62,6 +63,7 @@ function getConfig()
 			pageurl = data['pageurl'];
 		if(data['stateurl'] !== null && data['stateurl'].lenght > 0)
 			pageurl = data['stateurl'];
+		alert('Interval:' + interval + ' PageUrl:' + pageurl + ' StateUrl:' + stateurl);
 	});	
 }
 
