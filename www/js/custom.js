@@ -58,13 +58,13 @@ function getConfig()
 	$.getJSON( configurl)
     .done(function( data ) {
 		//alert(data);
-		if(data['interval'] !== null)
+		if(data['interval'] !== null && !isNaN(data['interval']))
 		{
 			interval = data['interval'];
 		}
-		if(data['pageurl'] !== null )
+		if(data['pageurl'] !== null && data['pageurl'].length > 0)
 			pageurl = data['pageurl'];
-		if(data['stateurl'] !== null )
+		if(data['stateurl'] !== null && data['stateurl'].length > 0)
 			stateurl = data['stateurl'];
 		//alert('Interval:' + interval + ' PageUrl:' + pageurl + ' StateUrl:' + stateurl);
 		
