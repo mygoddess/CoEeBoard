@@ -57,14 +57,15 @@ function getConfig()
 	
 	$.getJSON( configurl)
     .done(function( data ) {
-		if(data['interval'] !== null && Number.isInteger(data['interval']) )
+		alert(data);
+		if(data['interval'] !== null )
 		{
 			interval = data['interval'];
 		}
-		if(data['pageurl'] !== null && data['pageurl'].length > 0)
+		if(data['pageurl'] !== null )
 			pageurl = data['pageurl'];
-		if(data['stateurl'] !== null && data['stateurl'].length > 0)
-			pageurl = data['stateurl'];
+		if(data['stateurl'] !== null )
+			stateurl = data['stateurl'];
 		alert('Interval:' + interval + ' PageUrl:' + pageurl + ' StateUrl:' + stateurl);
 		
 		start();
