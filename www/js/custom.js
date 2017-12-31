@@ -1,9 +1,85 @@
+var state = '';
+var interval = 60;
+var pageurl = 'http://intra.coe.psu.ac.th/announce/page';
+var configurl = "http://intra.coe.psu.ac.th/announce/config";
+var stateurl = "http://intra.coe.psu.ac.th/announce/state";
 $( document ).ready(function() {
     console.log( "ready!" );
-	loadTemplate();
+	//loadTemplate();
 	//getContents();
+	getConfig();
+	checkState();
+	start();
 });
 
+function start()
+{
+	var refresh,       
+	intvrefresh = function() {
+		clearInterval(refresh);
+		refresh = setTimeout(function() {
+		   console.log('Current Page ' + $.mobile.activePage.attr("id"));
+		   checkState();
+		   if($.mobile.activePage.attr("id") !== 'main'){
+				   $.mobile.changePage( "#main", { transition: "slidedown", changeHash: true });	
+		   }
+		   intvrefresh();
+		}, interval * 1000);
+	};
+
+	$(document).on('keypress click mousedown mouseover mouseout drag drop', function() { console.log('reset timeout');intvrefresh(); });
+	intvrefresh();
+}
+
+function getpage()
+{
+	console.log('Get Page');
+	$.get( pageurl, {
+		isinit: true
+	})
+    .done(function( data ) {
+		//console.log(data);
+		console.log( "Load Template!" );
+		$('body').empty();
+		$('body').html(data);
+		//$("#main").trigger("create");
+		$.mobile.changePage( "#main", { transition: "fade", changeHash: true })
+	});
+}
+function getConfig()
+{
+	console.log('Check State!!');
+	
+	$.getJSON( configurl)
+    .done(function( data ) {
+		if(data['interval'] !== null && Number.isInteger(data['interval']) )
+		{
+			interval = data['interval'];
+		}
+		if(data['pageurl'] !== null && data['pageurl'].lenght > 0)
+			pageurl = data['pageurl'];
+		if(data['stateurl'] !== null && data['stateurl'].lenght > 0)
+			pageurl = data['stateurl'];
+	});	
+}
+
+function checkState()
+{
+	console.log('Check State!!');
+	$.getJSON( stateurl)
+    .done(function( data ) {
+		if(data['state'] !== null){
+			if(state != data['state'])
+			{
+				state = data['state'];
+				getpage();
+			} 
+		}
+	});	
+}
+
+
+//------------------------------------------------- v1 section ------------------------------------
 function getDetail(){
 	$.ajax({
 		url: "yourwebsite.com/hello.php",
