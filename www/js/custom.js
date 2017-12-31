@@ -9,7 +9,7 @@ $( document ).ready(function() {
 	//getContents();
 	getConfig();
 	checkState();
-	start();
+	
 });
 
 function start()
@@ -64,6 +64,7 @@ function getConfig()
 		if(data['stateurl'] !== null && data['stateurl'].lenght > 0)
 			pageurl = data['stateurl'];
 		alert('Interval:' + interval + ' PageUrl:' + pageurl + ' StateUrl:' + stateurl);
+		start();
 	});	
 }
 
