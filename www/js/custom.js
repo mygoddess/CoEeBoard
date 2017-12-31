@@ -8,7 +8,7 @@ $( document ).ready(function() {
 	//loadTemplate();
 	//getContents();
 	getConfig();
-	checkState();
+	//checkState();
 	
 });
 
@@ -51,7 +51,8 @@ function getpage()
 }
 function getConfig()
 {
-	console.log('Check State!!');
+	console.log('Get Config!!');
+	alert('Get Config!!');
 	
 	$.getJSON( configurl)
     .done(function( data ) {
