@@ -58,7 +58,7 @@ function getConfig()
 	$.getJSON( configurl)
     .done(function( data ) {
 		//alert(data);
-		if(data['interval'] !== null && Integer.isInteger(data['interval']))
+		if(data['interval'] !== null && Number.isInteger(data['interval']))
 		{
 			interval = data['interval'];
 		}
