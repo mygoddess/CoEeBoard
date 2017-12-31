@@ -61,9 +61,9 @@ function getConfig()
 		{
 			interval = data['interval'];
 		}
-		if(data['pageurl'] !== null && data['pageurl'].lenght > 0)
+		if(data['pageurl'] !== null && data['pageurl'].length > 0)
 			pageurl = data['pageurl'];
-		if(data['stateurl'] !== null && data['stateurl'].lenght > 0)
+		if(data['stateurl'] !== null && data['stateurl'].length > 0)
 			pageurl = data['stateurl'];
 		alert('Interval:' + interval + ' PageUrl:' + pageurl + ' StateUrl:' + stateurl);
 		
