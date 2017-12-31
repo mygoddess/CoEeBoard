@@ -15,7 +15,7 @@ $( document ).ready(function() {
 function start()
 {
 	checkState();
-	alert('start loop... ('+ interval + 'S)' );
+	//alert('start loop... ('+ interval + 'S)' );
 	var refresh,       
 	intvrefresh = function() {
 		clearInterval(refresh);
@@ -41,7 +41,7 @@ function getpage()
 		isinit: true
 	})
     .done(function( data ) {
-		alert('Loading Page...');
+		//alert('Loading Page...');
 		//console.log(data);
 		console.log( "Load Template!" );
 		$('body').empty();
@@ -53,12 +53,12 @@ function getpage()
 function getConfig()
 {
 	console.log('Get Config!!');
-	alert('Get Config!!');
+	//alert('Get Config!!');
 	
 	$.getJSON( configurl)
     .done(function( data ) {
-		alert(data);
-		if(data['interval'] !== null )
+		//alert(data);
+		if(data['interval'] !== null && Integer.isInteger(data['interval']))
 		{
 			interval = data['interval'];
 		}
@@ -66,7 +66,7 @@ function getConfig()
 			pageurl = data['pageurl'];
 		if(data['stateurl'] !== null )
 			stateurl = data['stateurl'];
-		alert('Interval:' + interval + ' PageUrl:' + pageurl + ' StateUrl:' + stateurl);
+		//alert('Interval:' + interval + ' PageUrl:' + pageurl + ' StateUrl:' + stateurl);
 		
 		start();
 	});	
@@ -78,7 +78,7 @@ function checkState()
 	$.getJSON( stateurl)
     .done(function( data ) {
 		if(data['state'] !== null){
-			alert('State ' + data['state']);
+			//alert('State ' + data['state']);
 			if(state != data['state'])
 			{
 				state = data['state'];
