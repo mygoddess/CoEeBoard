@@ -30,7 +30,7 @@ function start()
 		}, interval * 1000);
 	};
 
-	$(document).on('keypress click mousedown mouseover mouseout drag drop', function() { console.log('reset timeout');intvrefresh(); });
+	$(document).on('keypress click mousedown mouseover mouseout drag drop scroll wheel touchmove touchstart', function() { console.log('reset timeout');intvrefresh(); });
 	intvrefresh();
 }
 
