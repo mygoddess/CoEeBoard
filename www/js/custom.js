@@ -83,7 +83,11 @@ function checkState()
 			{
 				state = data['state'];
 				getpage();
-			} 
+			}
+			else
+			{
+				$("#main").trigger("refresh");
+			}
 		}
 	});	
 }
