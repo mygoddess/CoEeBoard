@@ -86,7 +86,7 @@ function checkState()
 			}
 			else
 			{
-				$("#main").trigger("refresh");
+				$("div[data-role='collapsible']").collapsible({	collapsed: true });
 			}
 		}
 	});	
