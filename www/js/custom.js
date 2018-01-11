@@ -4,7 +4,7 @@ var pageurl = 'http://intra.coe.psu.ac.th/announce/page';
 var configurl = "http://intra.coe.psu.ac.th/announce/config";
 var stateurl = "http://intra.coe.psu.ac.th/announce/state";
 $( document ).ready(function() {
-    console.log( "ready!" );
+    //console.log( "ready!" );
 	//loadTemplate();
 	//getContents();
 	getConfig();
@@ -20,7 +20,7 @@ function start()
 	intvrefresh = function() {
 		clearInterval(refresh);
 		refresh = setTimeout(function() {
-		   console.log('Current Page ' + $.mobile.activePage.attr("id"));
+		   //console.log('Current Page ' + $.mobile.activePage.attr("id"));
 		   
 		   checkState();
 		   if($.mobile.activePage.attr("id") !== 'main'){
@@ -30,20 +30,20 @@ function start()
 		}, interval * 1000);
 	};
 
-	$(document).on('keypress click mousedown mouseover mouseout drag drop scroll wheel touchmove touchstart', function() { console.log('reset timeout');intvrefresh(); });
+	$(document).on('keypress click mousedown mouseover mouseout drag drop scroll wheel touchmove touchstart', function() { /*console.log('reset timeout');*/intvrefresh(); });
 	intvrefresh();
 }
 
 function getpage()
 {
-	console.log('Get Page');
+	//console.log('Get Page');
 	$.get( pageurl, {
 		isinit: true
 	})
     .done(function( data ) {
 		//alert('Loading Page...');
 		//console.log(data);
-		console.log( "Load Template!" );
+		//console.log( "Load Template!" );
 		$('body').empty();
 		$('body').html(data);
 		//$("#main").trigger("create");
@@ -52,7 +52,7 @@ function getpage()
 }
 function getConfig()
 {
-	console.log('Get Config!!');
+	//console.log('Get Config!!');
 	//alert('Get Config!!');
 	
 	$.getJSON( configurl)
@@ -74,7 +74,7 @@ function getConfig()
 
 function checkState()
 {
-	console.log('Check State!!');
+	//console.log('Check State!!');
 	$.getJSON( stateurl)
     .done(function( data ) {
 		if(data['state'] !== null){
@@ -112,14 +112,14 @@ function _getdata(arr){
 	//your JSON resuls are now in arr. Do what you need with the array.
 }
 function loadTemplate() {
-	console.log('start load template');
+	//console.log('start load template');
 	var intraurl = "http://intra.coe.psu.ac.th/announce/template";
 	$.get( intraurl, {
 		isinit: true
 	})
     .done(function( data ) {
 		//console.log(data);
-		console.log( "Load Template!" );
+		//console.log( "Load Template!" );
 		$('body').html(data);
 		//$("#main").trigger("create");
 		$.mobile.changePage( "#main", { transition: "fade", changeHash: true })
